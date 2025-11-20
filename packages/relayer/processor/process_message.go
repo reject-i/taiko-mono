@@ -267,13 +267,13 @@ func (p *Processor) generateEncodedSignalProof(ctx context.Context,
 
 			hopEthClient = hop.ethClient
 
-			hopChainID = hop.chainID
-		}
+		hopChainID = hop.chainID
+	}
 
-		event, err := p.waitHeaderSynced(ctx, hopEthClient, hopChainID.Uint64(), blockNum)
-		if err != nil {
-			return nil, err
-		}
+	event, err := p.waitHeaderSynced(ctx, hopEthClient, p.destChainId.Uint64(), blockNum)
+	if err != nil {
+		return nil, err
+	}
 
 		blockNum = event.SyncedInBlockID
 	} else {
